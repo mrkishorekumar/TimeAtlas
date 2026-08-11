@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { CityTimezone } from '@/constants/timezone-data';
 import { SolarInfo } from '@/utils/solar';
+import { StyleSheet, View } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+
 
 interface LocationDisplayProps {
   city: CityTimezone;
@@ -11,37 +12,41 @@ interface LocationDisplayProps {
 export function LocationDisplay({ city, solar }: LocationDisplayProps) {
   return (
     <View style={styles.container}>
-      {/* Top Header Row for Location with Solar info beside it */}
-      <View style={styles.headerRow}>
-        <View style={styles.solarBadge}>
-          <Text style={styles.sunLabelText}>Sun ☀️ : {solar.daylight}</Text>
-          <Text style={styles.sunTimeText}>
-            {solar.sunrise} - {solar.sunset}
-          </Text>
+      <View style={{ flexDirection: "row", width: "90%"}}>
+        {/* Massive Multi-line City Typography */}
+        <View style={styles.typographyStack}>
+          {city.cityLines.map((line, index) => (
+            <ThemedText key={index} style={styles.cityLineText}>
+              {line}
+            </ThemedText>
+          ))}
+        </View>
+
+        {/* Top Header Row for Location with Solar info beside it */}
+        <View style={styles.headerRow}>
+          <View style={styles.solarBadge}>
+            <ThemedText style={styles.sunLabelText}>Sun ☀️ : {solar.daylight}</ThemedText>
+            <ThemedText style={styles.sunTimeText}>
+              {solar.sunrise} - {solar.sunset}
+            </ThemedText>
+          </View>
         </View>
       </View>
-
-      {/* Massive Multi-line City Typography */}
-      <View style={styles.typographyStack}>
-        {city.cityLines.map((line, index) => (
-          <Text key={index} style={styles.cityLineText}>
-            {line}
-          </Text>
-        ))}
-      </View>
     </View>
-  );
+  )
+
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
-    marginBottom: 24,
+    marginTop: 34,
+    flex: 1,
+    justifyContent : "center",
+    alignItems : "center"
   },
   headerRow: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    marginBottom: 4,
+    marginTop: 8,
   },
   solarBadge: {
     alignItems: 'flex-end',

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TouchableOpacity, StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useLocalSearchParams } from 'expo-router';
-import { CITIES, CityTimezone } from '@/constants/timezone-data';
-import { getSolarInfo } from '@/utils/solar';
 import { AppIcon } from '@/components/AppIcon';
 import { FormatToggle, TimeFormat } from '@/components/FormatToggle';
-import { TimeDisplay } from '@/components/TimeDisplay';
 import { LocationDisplay } from '@/components/LocationDisplay';
+import { TimeDisplay } from '@/components/TimeDisplay';
+import { CITIES, CityTimezone } from '@/constants/timezone-data';
+import { getSolarInfo } from '@/utils/solar';
+import { useLocalSearchParams } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const params = useLocalSearchParams<{ cityId?: string }>();
@@ -41,7 +41,7 @@ export default function HomeScreen() {
         {/* Top Header Bar */}
         <View style={styles.headerBar}>
           <TouchableOpacity activeOpacity={0.8} style={styles.topDialButton}>
-            <AppIcon name="dial" size={22} color="#FFFFFF" />
+            <AppIcon name="watch" size={22} color="#FFFFFF" />
           </TouchableOpacity>
 
           <FormatToggle format={format} onChange={setFormat} />
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 6,
-    marginBottom: 12,
+    marginVertical : 15
   },
   topDialButton: {
     width: 46,

@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+
 import { CITIES, CityTimezone } from '@/constants/timezone-data';
 import { TimeFormat } from './FormatToggle';
 
@@ -32,20 +34,20 @@ export function WorldClockListView({
                 styles.avatarCircle,
                 c.id === selectedCity.id && styles.avatarSelected,
               ]}>
-              <Text style={styles.avatarText}>{c.name.substring(0, 2).toUpperCase()}</Text>
+              <ThemedText style={styles.avatarText}>{c.name.substring(0, 2).toUpperCase()}</ThemedText>
             </TouchableOpacity>
           ))}
           <TouchableOpacity activeOpacity={0.7} style={styles.addCityBtn}>
-            <Text style={styles.addCityText}>+</Text>
+            <ThemedText style={styles.addCityText}>+</ThemedText>
           </TouchableOpacity>
         </ScrollView>
       </View>
 
       {/* Screen Title & View Mode Toggle */}
       <View style={styles.titleRow}>
-        <Text style={styles.title}>World Time</Text>
+        <ThemedText style={styles.title}>World Time</ThemedText>
         <TouchableOpacity activeOpacity={0.7} onPress={onToggleViewMode} style={styles.mapToggleBtn}>
-          <Text style={styles.mapToggleText}>Map View 🗺️</Text>
+          <ThemedText style={styles.mapToggleText}>Map View 🗺️</ThemedText>
         </TouchableOpacity>
       </View>
 
@@ -80,19 +82,19 @@ export function WorldClockListView({
               onPress={() => onSelectCity(item)}
               style={[styles.card, isSelected ? styles.activeCard : styles.inactiveCard]}>
               <View style={styles.cardLeft}>
-                <Text style={[styles.utcText, isSelected && styles.activeTextSecondary]}>
+                <ThemedText style={[styles.utcText, isSelected && styles.activeTextSecondary]}>
                   {item.utcOffset}
-                </Text>
-                <Text style={[styles.cityName, isSelected && styles.activeTextPrimary]}>
+                </ThemedText>
+                <ThemedText style={[styles.cityName, isSelected && styles.activeTextPrimary]}>
                   {item.name}
-                </Text>
+                </ThemedText>
               </View>
 
               <View style={styles.cardRight}>
-                <Text style={[styles.timeText, isSelected && styles.activeTextPrimary]}>
+                <ThemedText style={[styles.timeText, isSelected && styles.activeTextPrimary]}>
                   {formattedTime}
-                </Text>
-                <Text style={styles.sunMoonIndicator}>{isDay ? '☀️' : '🌙'}</Text>
+                </ThemedText>
+                <ThemedText style={styles.sunMoonIndicator}>{isDay ? '☀️' : '🌙'}</ThemedText>
               </View>
             </TouchableOpacity>
           );
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
   },
   avatarText: {
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
   },
   addCityBtn: {
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
   },
   addCityText: {
     fontSize: 22,
-    fontWeight: '400',
+    fontFamily: 'Inter_400Regular',
     color: '#333333',
   },
   titleRow: {
@@ -160,7 +162,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: '800',
+    fontFamily: 'Inter_800ExtraBold',
     color: '#000000',
     letterSpacing: -0.8,
   },
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
   },
   mapToggleText: {
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#007AFF',
   },
   cardList: {
@@ -208,13 +210,13 @@ const styles = StyleSheet.create({
   },
   utcText: {
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#888888',
     marginBottom: 4,
   },
   cityName: {
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
   },
   cardRight: {
@@ -224,7 +226,7 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 32,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
     letterSpacing: -1,
   },

@@ -1,14 +1,8 @@
 import { CITIES, CityTimezone } from '@/constants/timezone-data';
 import { useState } from 'react';
-import {
-  FlatList,
-  Modal,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { FlatList, Modal, StyleSheet, TextInput, TouchableOpacity, View,  } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppIcon } from './AppIcon';
 
@@ -33,9 +27,9 @@ export function CitySearchModal({ visible, onClose, onSelectCity }: CitySearchMo
         <View style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.title}>Select City</Text>
+            <ThemedText style={styles.title}>Select City</ThemedText>
             <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-              <Text style={styles.closeText}>Done</Text>
+              <ThemedText style={styles.closeText}>Done</ThemedText>
             </TouchableOpacity>
           </View>
 
@@ -66,12 +60,12 @@ export function CitySearchModal({ visible, onClose, onSelectCity }: CitySearchMo
                   onClose();
                 }}>
                 <View>
-                  <Text style={styles.cityName}>{item.name}</Text>
-                  <Text style={styles.cityRegion}>{item.region}</Text>
+                  <ThemedText style={styles.cityName}>{item.name}</ThemedText>
+                  <ThemedText style={styles.cityRegion}>{item.region}</ThemedText>
                 </View>
-                <Text style={styles.timeZoneCode}>
+                <ThemedText style={styles.timeZoneCode}>
                   {item.timeZone.split('/')[1]?.replace('_', ' ')}
-                </Text>
+                </ThemedText>
               </TouchableOpacity>
             )}
           />
@@ -103,12 +97,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
   },
   closeText: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#007AFF',
   },
   closeBtn: {
@@ -152,7 +146,7 @@ const styles = StyleSheet.create({
   },
   cityName: {
     fontSize: 17,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#000000',
   },
   cityRegion: {
@@ -162,7 +156,7 @@ const styles = StyleSheet.create({
   },
   timeZoneCode: {
     fontSize: 13,
-    fontWeight: '500',
+    fontFamily: 'Inter_500Medium',
     color: '#888888',
   },
 });

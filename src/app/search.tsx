@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
+import { StyleSheet, View, TextInput, TouchableOpacity, FlatList,  } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { CITIES, CityTimezone } from '@/constants/timezone-data';
@@ -27,7 +22,7 @@ export default function SearchScreen() {
       <View style={styles.content}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>Search Cities</Text>
+          <ThemedText style={styles.title}>Search Cities</ThemedText>
         </View>
 
         {/* Search Input */}
@@ -56,10 +51,10 @@ export default function SearchScreen() {
                 router.push({ pathname: '/', params: { cityId: item.id } });
               }}>
               <View>
-                <Text style={styles.cityName}>{item.name}</Text>
-                <Text style={styles.cityRegion}>{item.region}</Text>
+                <ThemedText style={styles.cityName}>{item.name}</ThemedText>
+                <ThemedText style={styles.cityRegion}>{item.region}</ThemedText>
               </View>
-              <Text style={styles.timeZoneCode}>{item.utcOffset}</Text>
+              <ThemedText style={styles.timeZoneCode}>{item.utcOffset}</ThemedText>
             </TouchableOpacity>
           )}
         />
@@ -84,7 +79,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: '800',
+    fontFamily: 'Inter_800ExtraBold',
     color: '#000000',
     letterSpacing: -0.8,
   },
@@ -128,7 +123,7 @@ const styles = StyleSheet.create({
   },
   cityName: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
   },
   cityRegion: {
@@ -138,7 +133,7 @@ const styles = StyleSheet.create({
   },
   timeZoneCode: {
     fontSize: 14,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#888888',
   },
 });

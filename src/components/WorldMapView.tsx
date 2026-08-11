@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+
 import { CITIES, CityTimezone } from '@/constants/timezone-data';
 import { TimeFormat } from './FormatToggle';
 
@@ -55,20 +57,20 @@ export function WorldMapView({
                 styles.avatarCircle,
                 c.id === selectedCity.id && styles.avatarSelected,
               ]}>
-              <Text style={styles.avatarText}>{c.name.substring(0, 2).toUpperCase()}</Text>
+              <ThemedText style={styles.avatarText}>{c.name.substring(0, 2).toUpperCase()}</ThemedText>
             </TouchableOpacity>
           ))}
           <TouchableOpacity activeOpacity={0.7} style={styles.addCityBtn}>
-            <Text style={styles.addCityText}>+</Text>
+            <ThemedText style={styles.addCityText}>+</ThemedText>
           </TouchableOpacity>
         </ScrollView>
       </View>
 
       {/* Screen Title & View Mode Toggle */}
       <View style={styles.titleRow}>
-        <Text style={styles.title}>World Time</Text>
+        <ThemedText style={styles.title}>World Time</ThemedText>
         <TouchableOpacity activeOpacity={0.7} onPress={onToggleViewMode} style={styles.listToggleBtn}>
-          <Text style={styles.listToggleText}>List View 📋</Text>
+          <ThemedText style={styles.listToggleText}>List View 📋</ThemedText>
         </TouchableOpacity>
       </View>
 
@@ -87,12 +89,12 @@ export function WorldMapView({
           {/* Floating Time Card on Map */}
           <View style={styles.floatingMapCard}>
             <View>
-              <Text style={styles.mapCardUtc}>{selectedCity.utcOffset}</Text>
-              <Text style={styles.mapCardCity}>{selectedCity.name}</Text>
+              <ThemedText style={styles.mapCardUtc}>{selectedCity.utcOffset}</ThemedText>
+              <ThemedText style={styles.mapCardCity}>{selectedCity.name}</ThemedText>
             </View>
             <View style={styles.mapCardTimeRow}>
-              <Text style={styles.mapCardTime}>{formattedTime}</Text>
-              <Text style={styles.mapCardSun}>☀️</Text>
+              <ThemedText style={styles.mapCardTime}>{formattedTime}</ThemedText>
+              <ThemedText style={styles.mapCardSun}>☀️</ThemedText>
             </View>
           </View>
         </View>
@@ -113,9 +115,9 @@ export function WorldMapView({
                   if (matchingCity) onSelectCity(matchingCity);
                 }}
                 style={[styles.utcItem, isSelected && styles.utcItemSelected]}>
-                <Text style={[styles.utcItemText, isSelected && styles.utcItemTextSelected]}>
+                <ThemedText style={[styles.utcItemText, isSelected && styles.utcItemTextSelected]}>
                   {utc}
-                </Text>
+                </ThemedText>
               </TouchableOpacity>
             );
           })}
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
   },
   avatarText: {
     fontSize: 14,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
   },
   addCityBtn: {
@@ -170,7 +172,7 @@ const styles = StyleSheet.create({
   },
   addCityText: {
     fontSize: 22,
-    fontWeight: '400',
+    fontFamily: 'Inter_400Regular',
     color: '#333333',
   },
   titleRow: {
@@ -181,7 +183,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: '800',
+    fontFamily: 'Inter_800ExtraBold',
     color: '#000000',
     letterSpacing: -0.8,
   },
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
   },
   listToggleText: {
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#007AFF',
   },
   mapContainer: {
@@ -279,12 +281,12 @@ const styles = StyleSheet.create({
   },
   mapCardUtc: {
     fontSize: 12,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#888888',
   },
   mapCardCity: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#FFFFFF',
   },
   mapCardTimeRow: {
@@ -294,7 +296,7 @@ const styles = StyleSheet.create({
   },
   mapCardTime: {
     fontSize: 30,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#FFFFFF',
     letterSpacing: -0.5,
   },
@@ -328,7 +330,7 @@ const styles = StyleSheet.create({
   },
   utcItemText: {
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#666666',
   },
   utcItemTextSelected: {

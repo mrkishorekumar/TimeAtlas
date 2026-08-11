@@ -34,27 +34,27 @@ const styles = StyleSheet.create({
   small: {
     fontSize: 14,
     lineHeight: 20,
-    fontWeight: 500,
+    fontFamily: 'Inter_500Medium',
   },
   smallBold: {
     fontSize: 14,
     lineHeight: 20,
-    fontWeight: 700,
+    fontFamily: 'Inter_700Bold',
   },
   default: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: 500,
+    fontFamily: 'Inter_500Medium',
   },
   title: {
     fontSize: 48,
-    fontWeight: 600,
+    fontFamily: 'Inter_600SemiBold',
     lineHeight: 52,
   },
   subtitle: {
     fontSize: 32,
     lineHeight: 44,
-    fontWeight: 600,
+    fontFamily: 'Inter_600SemiBold',
   },
   link: {
     lineHeight: 30,
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   },
   code: {
     fontFamily: Fonts.mono,
-    fontWeight: Platform.select({ android: 700 }) ?? 500,
     fontSize: 12,
   },
 });

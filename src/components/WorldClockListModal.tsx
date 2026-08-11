@@ -1,5 +1,7 @@
 import { CITIES, CityTimezone } from '@/constants/timezone-data';
-import { FlatList, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Modal, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TimeFormat } from './FormatToggle';
 
@@ -24,9 +26,9 @@ export function WorldClockListModal({
         <View style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.title}>World Clocks</Text>
+            <ThemedText style={styles.title}>World Clocks</ThemedText>
             <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-              <Text style={styles.closeText}>Close</Text>
+              <ThemedText style={styles.closeText}>Close</ThemedText>
             </TouchableOpacity>
           </View>
 
@@ -53,10 +55,10 @@ export function WorldClockListModal({
                     onClose();
                   }}>
                   <View>
-                    <Text style={styles.cityName}>{item.name}</Text>
-                    <Text style={styles.region}>{item.region}</Text>
+                    <ThemedText style={styles.cityName}>{item.name}</ThemedText>
+                    <ThemedText style={styles.region}>{item.region}</ThemedText>
                   </View>
-                  <Text style={styles.timeText}>{formattedTime}</Text>
+                  <ThemedText style={styles.timeText}>{formattedTime}</ThemedText>
                 </TouchableOpacity>
               );
             }}
@@ -89,12 +91,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
   },
   closeText: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
     color: '#007AFF',
   },
   closeBtn: {
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
   },
   cityName: {
     fontSize: 18,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
   },
   region: {
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 22,
-    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     color: '#000000',
     letterSpacing: -0.5,
   },

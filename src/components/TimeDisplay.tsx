@@ -1,5 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { ThemedText } from '@/components/themed-text';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+
 import { TimeFormat } from './FormatToggle';
 
 interface TimeDisplayProps {
@@ -48,52 +49,50 @@ export function TimeDisplay({
 
   return (
     <View style={styles.container}>
-      {/* Huge Giant Digital Clock Display */}
-      <View style={styles.leftClockColumn}>
-        <Text style={styles.hugeDigit}>{hourStr}</Text>
-        <Text style={styles.hugeDigit}>{minuteStr}</Text>
-      </View>
-
-      {/* Right Column: Date Info & Day Picker Wheel */}
-      <View style={styles.rightInfoColumn}>
-        {/* Top Right: Weekday & Date */}
+      <View style={styles.subContainer}>
+        <ThemedText style={styles.hugeDigit}>{hourStr}</ThemedText>
         <View style={styles.dateHeader}>
-          <Text style={styles.weekdayText}>{weekdayStr}</Text>
-          <Text style={styles.monthText}>{monthDayText}</Text>
+          <ThemedText style={styles.weekdayText}>{weekdayStr}</ThemedText>
+          <ThemedText style={styles.monthText}>{monthDayText}</ThemedText>
         </View>
-
-        {/* Bottom Right: Scroll/Tap Date Wheel (14, 15, 16) */}
+      </View>
+      <View style={styles.subContainer}>
+        <ThemedText style={styles.hugeDigit}>{minuteStr}</ThemedText>
         <View style={styles.dayWheelContainer}>
           <TouchableOpacity activeOpacity={0.6} onPress={() => onSelectDay(prevDay)}>
-            <Text style={styles.fadedDayNumber}>{prevDay}</Text>
+            <ThemedText style={styles.fadedDayNumber}>{prevDay}</ThemedText>
           </TouchableOpacity>
           <TouchableOpacity activeOpacity={0.8} style={styles.activeDayPill}>
-            <Text style={styles.activeDayNumber}>{selectedDay}</Text>
+            <ThemedText style={styles.activeDayNumber}>{selectedDay}</ThemedText>
           </TouchableOpacity>
           <TouchableOpacity activeOpacity={0.6} onPress={() => onSelectDay(nextDay)}>
-            <Text style={styles.fadedDayNumber}>{nextDay}</Text>
+            <ThemedText style={styles.fadedDayNumber}>{nextDay}</ThemedText>
           </TouchableOpacity>
         </View>
       </View>
     </View>
-  );
+  )
+
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'stretch',
-    marginVertical: 8,
+    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 18,
+  },
+  subContainer: {
+    flexDirection: "row", alignItems: "center", justifyContent: "space-between"
   },
   leftClockColumn: {
     justifyContent: 'flex-start',
   },
   hugeDigit: {
-    fontSize: 114,
-    fontWeight: '800',
+    fontSize: 150,
+    fontFamily: 'Inter_800ExtraBold',
     color: '#000000',
-    lineHeight: 102,
+    lineHeight: 150,
     letterSpacing: -5,
   },
   rightInfoColumn: {
@@ -104,41 +103,41 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   dateHeader: {
-    marginBottom: 20,
+    flex: 1,
+    marginLeft: 35
   },
   weekdayText: {
-    fontSize: 32,
-    fontWeight: '400',
+    fontSize: 42,
+    fontFamily: 'Inter_400Regular',
     color: '#000000',
-    lineHeight: 36,
+    lineHeight: 45,
     letterSpacing: -0.6,
   },
   monthText: {
-    fontSize: 32,
-    fontWeight: '400',
+    fontSize: 42,
+    fontFamily: 'Inter_400Regular',
     color: '#000000',
-    lineHeight: 36,
+    lineHeight: 50,
     letterSpacing: -0.6,
   },
   dayWheelContainer: {
-    alignItems: 'flex-start',
-    gap: 2,
-    paddingTop: 6,
+    flex: 1,
+    marginLeft: 35
   },
   fadedDayNumber: {
-    fontSize: 34,
-    fontWeight: '600',
+    fontSize: 42,
+    fontFamily: 'Inter_600SemiBold',
     color: '#B5B5B5',
     opacity: 0.35,
-    lineHeight: 36,
+    lineHeight: 45,
   },
   activeDayPill: {
     paddingVertical: 1,
   },
   activeDayNumber: {
     fontSize: 42,
-    fontWeight: '800',
+    fontFamily: 'Inter_800ExtraBold',
     color: '#000000',
-    lineHeight: 44,
+    lineHeight: 45,
   },
 });

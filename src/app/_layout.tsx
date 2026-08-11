@@ -1,10 +1,18 @@
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import {
   FloatingDock,
-  TabNavigationState,
   TabDescriptor,
   TabNavigationHelpers,
+  TabNavigationState,
 } from '@/components/FloatingDock';
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_800ExtraBold,
+  useFonts,
+} from '@expo-google-fonts/inter';
 import { DarkTheme, DefaultTheme, Tabs, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from 'react-native';
@@ -13,10 +21,24 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_800ExtraBold,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <AnimatedSplashOverlay />
       <Tabs
+        initialRouteName='index'
         tabBar={(props) => (
           <FloatingDock
             state={props.state as unknown as TabNavigationState}
